@@ -8,7 +8,7 @@ var express = require('express'),
     dictionary = require('./routes/kasiDictionary'),    
     wordService = require('./dataServices/wordService'),
     ConnectionProvider = require('./routes/connectionProvider');
-    //session = require('express-session');
+   
 
 
 var app = express();
@@ -23,7 +23,7 @@ var dbOptions = {
 
 var serviceSetupCallback = function(connection){
 	return {
-		wordServ : new OrganiserDataService(connection)
+		wordService : new wordService(connection)
     
 	}
 };
@@ -46,3 +46,5 @@ app.use(bodyParser.json());
 
 var kasiDictionary = new dictionary();
 app.get('/',kasiDictionary.showWords)
+
+app.listen(5000)
