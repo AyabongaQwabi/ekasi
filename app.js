@@ -33,12 +33,9 @@ app.use(myConnectionProvider.setupProvider);
 app.use(myConnection(mysql, dbOptions, 'pool'));
 app.use(cookieParser());
 app.use(session({secret:'veryfunnysecret'}));
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
 app.use(express.static('public'));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -46,5 +43,6 @@ app.use(bodyParser.json());
 
 var kasiDictionary = new dictionary();
 app.get('/',kasiDictionary.showWords)
-
+app.post('/words/add',kasiDictionary.addWord)
+app.get('/words/rate/:word_id/:rating',kasiDictionary.rateWord)
 app.listen(5000)

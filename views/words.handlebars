@@ -1,11 +1,22 @@
 <div class='container'>
+
 	<h3 class='flow-text badge large'> iKasi Dictionary </h3>
+	<div class=' card-panel white lighten-2 small center'>
+		<form method='post' action='/words/add'>
+			<label class='flow-text ' for='#name'>Slang Word</label>
+			<input type='text' id='name' name='name'>
+			<label class='flow-text' for='#description'>What does it mean ?</label>
+			<textarea id='description' name='description'></textarea>
+			<button class='btn' typpe='submit' > Add </a>		
+		</form>
+	</div>
+	
 	{{#words}}
 	<div class='card-panel blue lighten-2 small center'>
 		<h5 class='flow-text light-blue'><b> {{name}}</b></h5>
 		<p> {{description}}</p>
-		<a class='btn orange'> True </a>
-		<a class='btn tomato'> False </a>
+		<a class='btn orange' href='words/rate/{{id}}/true'> True </a>
+		<a class='btn tomato' href='words/rate/{{id}}/false'> False </a>
 	</div>
 	{{/words}}
 

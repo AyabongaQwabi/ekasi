@@ -14,11 +14,11 @@ module.exports = function(connection){
  }
 
  this.getWords = function(cb){
- 	executeQuery('select * from word',cb)
+ 	executeQuery('select * from word ORDER BY id DESC ',cb)
  }
 
  this.rateWord = function(word_data ,cb){
- 	executeQuery('insert into rating where word_id = ? set ?',word_data,cb)
+ 	executeQuery('insert into rating set ?',word_data,cb)
  }
 
 }
